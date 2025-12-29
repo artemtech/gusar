@@ -1,0 +1,22 @@
+FROM node:22-slim
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Jakarta
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY ./server/package*.json .
+
+RUN npm install
+
+COPY ./server/ .
+
+EXPOSE 3001
+
+CMD ["npm", "run", "start"]
+

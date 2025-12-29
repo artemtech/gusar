@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.server
+    image: gusar-backend
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.client
+    image: gusar-frontend
+    depends_on:
+      - backend
+    ports:
+      - 3000:80
