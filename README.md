@@ -119,7 +119,26 @@ gusar/
 │       │       ├── NetworkChart.jsx
 │       │       └── ProcessChart.jsx
 └── README.md
+└── docker-compose.yaml
+└── docker/
+    └── Dockerfile.client
+    └── Dockerfile.server
+    └── nginx.conf
 ```
+## Using docker
+
+```bash
+# build image first
+docker compose build app
+docker compose build backend
+
+# start the frontend and backend
+docker compose up -d
+
+# access
+access via browser at http://localhost:3000
+```
+
 
 ## License
 
